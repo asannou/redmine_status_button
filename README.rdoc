@@ -8,7 +8,5 @@
 == Usage
 
 You should do these before this plugin can automaticly change the issues assignee:
-1. Create some issue custom fileds(user format), such as 'designer' and 'reporter', etc.
-2. Check Status Button plugin settings. Choose 'designer', 'reporter' or empty for each issue status.
-3. Fill the 'designer', 'reporter' field when create/edit issues.
+1. Check Status Button plugin settings. Fill '__current_user__', '__author__', user's login or empty for each issue status.
 

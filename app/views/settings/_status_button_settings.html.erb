@@ -17,22 +17,14 @@
   <table class="list">
     <thead><tr>
     <th><%=l(:field_status)%></th>
-    <th><%=l(:field_assigned_to)%></th>
+    <th><%=l(:field_assigned_to)%><br>("__current_user__", "__author__", <%=l(:field_login)%>)</th>
     </tr></thead>
     <tbody>
     <% for status in IssueStatus.all() %>
       <tr class="<%= cycle("odd", "even") %>" align="center">
       <td><%= h(status.name) %></td>
       <td align="center">
-        <% if settings['status_assigned_to'].present? %>
-        <%= select_tag	'settings[status_assigned_to]['+status.id.to_s+']',
-						options_for_select(options, 
-                                                :selected => settings['status_assigned_to'][status.id.to_s]),
-						:include_blank => true %>
-        <% else %>
-        <%= select_tag	'settings[status_assigned_to]['+status.id.to_s+']',
-						options_for_select(options), :include_blank => true %>
-        <% end %>
+        <%= text_field_tag 'settings[status_assigned_to]['+status.id.to_s+']', settings['status_assigned_to'][status.id.to_s] %>
 	  </td>
       </tr>
     <% end %>
