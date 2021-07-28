@@ -24,7 +24,7 @@
       <tr class="<%= cycle("odd", "even") %>" align="center">
       <td><%= h(status.name) %></td>
       <td align="center">
-        <%= text_field_tag 'settings[status_assigned_to]['+status.id.to_s+']', settings['status_assigned_to'][status.id.to_s] %>
+        <%= text_field_tag 'settings[status_assigned_to]['+status.id.to_s+']', settings['status_assigned_to']&.[](status.id.to_s) %>
 	  </td>
       </tr>
     <% end %>
