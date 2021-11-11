@@ -8,9 +8,10 @@ class IssueStatusHook < Redmine::Hook::ViewListener
 	end
 	
 	def controller_issues_edit_before_save(context={})
-		return if !StatusButton::Hooks.is_open?(context[:issue].project)
-		# TODO: 检测status变更（需要用到issues@attributes_before_change）
-		update_issues(context[:issue])
+		issue = context[:issue]
+		return if !StatusButton::Hooks.is_open?(issue.project)
+		return if !issue.will_save_change_to_status_id?
+		update_issues(issue)
 	end
 	
 	def update_issues(issue)
