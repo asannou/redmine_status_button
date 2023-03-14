@@ -1,5 +1,5 @@
 
-class IssueStatusHook < Redmine::Hook::ViewListener
+class IssuesStatusHook < Redmine::Hook::ViewListener
 	CURRENT_USER = "__current_user__"
 	AUTHOR = "__author__"
 
